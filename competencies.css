@@ -1,0 +1,355 @@
+/* ========================================
+   CORE COMPETENCIES SECTION - NEON VIBE
+   ======================================== */
+
+.competencies {
+    padding: 3rem 2rem;
+    background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,240,224,0.02));
+    position: relative;
+    overflow: hidden;
+}
+
+.competencies::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(0,240,224,0.05), transparent 50%);
+    animation: pulse-bg 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse-bg {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+}
+
+.competencies-subtitle {
+    text-align: center;
+    color: var(--muted-text);
+    font-size: 1.4rem;
+    margin-top: -1rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    letter-spacing: 0.05rem;
+}
+
+.competencies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.competency-card {
+    background: linear-gradient(135deg, rgba(0,20,40,0.9), rgba(0,10,20,0.95));
+    border: 2px solid rgba(0,240,224,0.1);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+/* Neon glow effect on card */
+.competency-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        var(--main-color), 
+        #9761ff, 
+        var(--main-color), 
+        #ff64dc
+    );
+    border-radius: 1.5rem;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+    filter: blur(8px);
+}
+
+.competency-card:hover::before {
+    opacity: 0.7;
+    animation: neon-rotate 3s linear infinite;
+}
+
+@keyframes neon-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Inner glow effect */
+.competency-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0,240,224,0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 1.5rem;
+}
+
+.competency-card:hover::after {
+    opacity: 1;
+}
+
+.competency-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    border-color: var(--main-color);
+    box-shadow: 
+        0 0 30px rgba(0,240,224,0.3),
+        0 0 60px rgba(0,240,224,0.2),
+        0 20px 40px rgba(0,0,0,0.5),
+        inset 0 0 20px rgba(0,240,224,0.05);
+}
+
+.competency-icon {
+    width: 10rem;
+    height: 10rem;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0,240,224,0.1), rgba(147,97,255,0.1));
+    border-radius: 50%;
+    border: 3px solid rgba(0,240,224,0.3);
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.competency-icon::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    background: conic-gradient(
+        from 0deg,
+        transparent,
+        var(--main-color),
+        transparent 180deg,
+        var(--main-color),
+        transparent 360deg
+    );
+    border-radius: 50%;
+    opacity: 0;
+    animation: spin 4s linear infinite;
+    transition: opacity 0.4s ease;
+}
+
+.competency-card:hover .competency-icon::before {
+    opacity: 0.4;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.competency-icon::after {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    background: rgba(7,24,38,0.95);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.competency-card:hover .competency-icon {
+    transform: scale(1.1) rotateY(360deg);
+    border-color: var(--main-color);
+    box-shadow: 
+        0 0 30px rgba(0,240,224,0.5),
+        inset 0 0 20px rgba(0,240,224,0.1);
+}
+
+.competency-icon i {
+    font-size: 4.5rem;
+    color: var(--main-color);
+    z-index: 2;
+    transition: all 0.4s ease;
+    filter: drop-shadow(0 0 10px rgba(0,240,224,0.6));
+}
+
+.competency-card:hover .competency-icon i {
+    color: #fff;
+    filter: drop-shadow(0 0 20px var(--main-color));
+    transform: scale(1.1);
+}
+
+.competency-card h3 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    line-height: 1.4;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.competency-card:hover h3 {
+    color: var(--main-color);
+    text-shadow: 0 0 20px rgba(0,240,224,0.5);
+}
+
+.level-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: linear-gradient(90deg, rgba(0,240,224,0.2), rgba(147,97,255,0.2));
+    border: 1px solid var(--main-color);
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--main-color);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0,240,224,0.2);
+}
+
+.competency-card:hover .level-badge {
+    background: linear-gradient(90deg, var(--main-color), #9761ff);
+    color: #071826;
+    box-shadow: 0 0 20px rgba(0,240,224,0.6);
+    transform: scale(1.05);
+}
+
+/* Different colors for different levels */
+.level-badge.level-advanced {
+    border-color: #ff64dc;
+    color: #ff64dc;
+    background: linear-gradient(90deg, rgba(255,100,220,0.2), rgba(147,97,255,0.2));
+}
+
+.competency-card:hover .level-badge.level-advanced {
+    background: linear-gradient(90deg, #ff64dc, #9761ff);
+    color: #071826;
+    box-shadow: 0 0 20px rgba(255,100,220,0.6);
+}
+
+.level-badge.level-beginner {
+    border-color: #9761ff;
+    color: #9761ff;
+    background: linear-gradient(90deg, rgba(151,97,255,0.2), rgba(0,240,224,0.2));
+}
+
+.competency-card:hover .level-badge.level-beginner {
+    background: linear-gradient(90deg, #9761ff, var(--main-color));
+    color: #071826;
+    box-shadow: 0 0 20px rgba(151,97,255,0.6);
+}
+
+/* Floating particles effect */
+.competency-card:hover {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(-12px) translateX(0); }
+    33% { transform: translateY(-16px) translateX(4px); }
+    66% { transform: translateY(-14px) translateX(-4px); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .competencies {
+        padding: 2rem 1.5rem;
+    }
+    
+    .competencies-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .competency-icon {
+        width: 8rem;
+        height: 8rem;
+    }
+    
+    .competency-icon i {
+        font-size: 3.5rem;
+    }
+    
+    .competency-card h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .competencies-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .competency-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .competencies-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .competency-icon {
+        width: 7rem;
+        height: 7rem;
+    }
+    
+    .competency-icon i {
+        font-size: 3rem;
+    }
+    
+    .competency-card h3 {
+        font-size: 1.4rem;
+    }
+    
+    .level-badge {
+        font-size: 1.1rem;
+        padding: 0.4rem 1.2rem;
+    }
+}
+
+/* Add scan line effect */
+@keyframes scan-line {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
+
+.competency-card:hover::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--main-color), transparent);
+    animation: scan-line 2s linear infinite;
+}
+
+/* Glitch effect on hover for text */
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.competency-card:hover h3 {
+    animation: glitch 0.3s ease-in-out 2;
+}
