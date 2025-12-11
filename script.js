@@ -228,17 +228,11 @@ document.querySelectorAll('.social-link').forEach(link => {
 const cvModal = document.getElementById('cvModal');
 const viewCvBtn = document.getElementById('viewCvBtn');
 const closeCvBtn = document.getElementById('closeCv');
-const cvContent = document.getElementById('cvContent');
 
 // Open CV Modal
 if (viewCvBtn) {
     viewCvBtn.addEventListener('click', () => {
-        if (typeof generateCVHTML === 'function') {
-            cvContent.innerHTML = generateCVHTML();
-            cvModal.setAttribute('aria-hidden', 'false');
-        } else {
-            console.error('CV data not loaded. Make sure cv-data.js is included.');
-        }
+        cvModal.setAttribute('aria-hidden', 'false');
     });
 }
 
